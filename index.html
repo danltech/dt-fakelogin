@@ -1,168 +1,836 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>danltech.xyz — Registered Domain</title>
+<title>DanlTech — Alte Hardware. Neue Chancen.</title>
+<meta name="description" content="DanlTech ist ein Entwicklerteam, das alte Hardware weiterverwendet – ohne viel originale Software zu entfernen. Aktuell im Fokus: Smartphones. Diese Seite ist ein Platzhalter.">
+<meta name="theme-color" content="#080a08">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f4f5f7;
-    --card:#ffffff;
-    --text:#1c1f23;
-    --muted:#6b7280;
-    --line:#e5e7eb;
-    --accent:#2563eb;
+    --accent:#3DD425;
+    --accent-rgb:61,212,37;
+    --bg:#080a08;
+    --bg-soft:#0e110e;
+    --surface:#121612;
+    --surface-2:#171c17;
+    --border:rgba(255,255,255,.08);
+    --border-accent:rgba(61,212,37,.28);
+    --text:#e9efe8;
+    --muted:#94a192;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   }
+
   *{box-sizing:border-box}
-  html,body{height:100%}
+
+  html{scroll-behavior:smooth}
+
   body{
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg);
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    line-height:1.6;
     color:var(--text);
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(900px 520px at 12% -10%, rgba(var(--accent-rgb),.16), transparent 70%),
+      radial-gradient(760px 420px at 92% 2%, rgba(var(--accent-rgb),.08), transparent 70%);
+    background-repeat:no-repeat;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* dezentes Raster im Hintergrund */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:
+      linear-gradient(rgba(var(--accent-rgb),.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--accent-rgb),.055) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 85% 60% at 50% 0%, #000 35%, transparent 100%);
+    mask-image:radial-gradient(ellipse 85% 60% at 50% 0%, #000 35%, transparent 100%);
+  }
+
+  ::selection{background:rgba(var(--accent-rgb),.3);color:#fff}
+
+  a{color:var(--accent)}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  .page{position:relative;z-index:1}
+
+  /* ---------- Hinweisleiste ---------- */
+  .topbar{
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:24px;
-    -webkit-font-smoothing:antialiased;
-  }
-  .card{
-    width:100%;
-    max-width:560px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:40px 36px 32px;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:9px 18px;
+    font-size:.8rem;
+    letter-spacing:.01em;
+    color:#cfe6c9;
+    background:linear-gradient(90deg, rgba(var(--accent-rgb),.18), rgba(var(--accent-rgb),.05));
+    border-bottom:1px solid var(--border-accent);
     text-align:center;
-    box-shadow:0 10px 30px rgba(16,24,40,.06);
   }
-  .badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:12px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--muted);
-    border:1px solid var(--line);
-    border-radius:999px;
-    padding:6px 14px;
-    margin-bottom:26px;
+  .topbar strong{color:var(--accent);font-weight:600}
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(8,10,8,.75);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
   }
-  .dot{width:7px;height:7px;border-radius:50%;background:#f59e0b}
-  h1{
-    font-size:26px;
-    line-height:1.25;
-    margin:0 0 10px;
-    font-weight:600;
-    word-break:break-word;
-  }
-  .domain{color:var(--accent)}
-  p{
-    margin:0 0 14px;
-    font-size:15px;
-    line-height:1.6;
-    color:var(--muted);
-  }
-  .info{
-    margin:26px 0 4px;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    text-align:left;
-  }
-  .row{
+
+  .nav{
+    max-width:1120px;
+    margin:0 auto;
+    padding:14px 24px;
     display:flex;
+    align-items:center;
     justify-content:space-between;
     gap:16px;
-    padding:11px 2px;
-    font-size:14px;
-    border-bottom:1px solid var(--line);
   }
-  .row:last-child{border-bottom:0}
-  .row span:first-child{color:var(--muted)}
-  .row span:last-child{font-weight:500;text-align:right;word-break:break-word}
-  .none{color:#b45309}
-  .actions{
-    margin-top:26px;
+
+  .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:11px;
+    text-decoration:none;
+    color:var(--text);
+    font-weight:800;
+    font-size:1.05rem;
+    letter-spacing:-.03em;
+  }
+
+  .logo{
+    width:32px;
+    height:32px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    font-size:.9rem;
+    font-weight:900;
+    color:#061106;
+    background:linear-gradient(140deg, var(--accent), #1f7a12);
+    box-shadow:0 0 22px rgba(var(--accent-rgb),.4);
+  }
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:4px;
+  }
+
+  .nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:.9rem;
+    font-weight:500;
+    padding:8px 12px;
+    border-radius:8px;
+    transition:color .18s, background .18s;
+  }
+
+  .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+  .nav-links a.gh{
+    color:var(--accent);
+    border:1px solid var(--border-accent);
+    background:rgba(var(--accent-rgb),.07);
+  }
+  .nav-links a.gh:hover{background:rgba(var(--accent-rgb),.15)}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:13px 22px;
+    border-radius:10px;
+    font-size:.93rem;
+    font-weight:600;
+    font-family:inherit;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .22s ease, background .2s ease, border-color .2s ease;
+  }
+
+  .btn-primary{
+    background:var(--accent);
+    color:#061106;
+    box-shadow:0 0 0 rgba(var(--accent-rgb),0);
+  }
+  .btn-primary:hover{
+    background:#4ae832;
+    transform:translateY(-2px);
+    box-shadow:0 10px 32px -8px rgba(var(--accent-rgb),.65);
+  }
+
+  .btn-ghost{
+    color:var(--text);
+    border-color:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.03);
+  }
+  .btn-ghost:hover{
+    border-color:rgba(var(--accent-rgb),.55);
+    background:rgba(var(--accent-rgb),.09);
+    transform:translateY(-2px);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    max-width:1120px;
+    margin:0 auto;
+    padding:76px 24px 44px;
+    display:grid;
+    grid-template-columns:1.12fr .88fr;
+    gap:52px;
+    align-items:center;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:6px 13px;
+    border-radius:999px;
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    border:1px solid var(--border-accent);
+    background:rgba(var(--accent-rgb),.07);
+  }
+
+  h1{
+    margin:22px 0 0;
+    font-size:clamp(2.9rem, 7.5vw, 4.7rem);
+    line-height:.98;
+    font-weight:800;
+    letter-spacing:-.05em;
+  }
+
+  h1 .accent{
+    color:var(--accent);
+    text-shadow:0 0 46px rgba(var(--accent-rgb),.45);
+  }
+
+  .lead{
+    margin:22px 0 30px;
+    max-width:54ch;
+    font-size:1.07rem;
+    color:var(--muted);
+  }
+  .lead strong{color:var(--text);font-weight:600}
+
+  .cta-row{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
-    justify-content:center;
+    gap:12px;
   }
-  a.btn{
+
+  .hero-note{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin:22px 0 0;
+    font-size:.84rem;
+    color:var(--muted);
+  }
+
+  /* ---------- Terminal ---------- */
+  .terminal{
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    background:linear-gradient(180deg, var(--surface-2), var(--surface));
+    box-shadow:
+      0 30px 70px -28px rgba(0,0,0,.9),
+      0 0 0 1px rgba(var(--accent-rgb),.07);
+  }
+
+  .terminal-bar{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:11px 14px;
+    border-bottom:1px solid var(--border);
+    background:rgba(255,255,255,.022);
+  }
+
+  .term-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#2b332b;
+  }
+  .term-dot:first-child{background:rgba(var(--accent-rgb),.55)}
+
+  .terminal-title{
+    margin-left:8px;
+    font-family:var(--mono);
+    font-size:.72rem;
+    color:var(--muted);
+  }
+
+  .terminal-body{
+    margin:0;
+    padding:20px 20px 24px;
+    font-family:var(--mono);
+    font-size:.82rem;
+    line-height:1.9;
+    color:#b9c6b7;
+    white-space:pre-wrap;
+    word-break:break-word;
+  }
+  .terminal-body .p{color:var(--accent)}
+  .terminal-body .o{color:var(--text)}
+  .terminal-body .w{
+    color:var(--accent);
+    background:rgba(var(--accent-rgb),.12);
+    border:1px solid rgba(var(--accent-rgb),.22);
+    border-radius:4px;
+    padding:1px 6px;
+  }
+  .cursor{
     display:inline-block;
-    padding:10px 18px;
-    font-size:14px;
-    font-weight:500;
-    border-radius:9px;
-    text-decoration:none;
-    border:1px solid var(--line);
-    color:var(--text);
-    background:#fff;
-    transition:background .15s ease, border-color .15s ease;
+    color:var(--accent);
+    animation:blink 1.1s steps(1) infinite;
   }
-  a.btn:hover{background:#f9fafb;border-color:#d1d5db}
-  a.btn.primary{
-    background:var(--accent);
-    border-color:var(--accent);
-    color:#fff;
+  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+  /* ---------- Sections ---------- */
+  .section{
+    max-width:1120px;
+    margin:0 auto;
+    padding:58px 24px;
   }
-  a.btn.primary:hover{background:#1d4ed8;border-color:#1d4ed8}
-  footer{
+
+  .kicker{
+    margin:0 0 12px;
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  h2{
+    margin:0 0 14px;
+    font-size:clamp(1.6rem, 3.4vw, 2.15rem);
+    font-weight:700;
+    letter-spacing:-.035em;
+    line-height:1.15;
+  }
+
+  .section-head p{
+    margin:0;
+    max-width:62ch;
+    color:var(--muted);
+  }
+
+  /* ---------- Karten ---------- */
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+    margin-top:34px;
+  }
+
+  .card{
+    position:relative;
+    padding:24px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:linear-gradient(180deg, rgba(255,255,255,.038), rgba(255,255,255,.012));
+    transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  }
+
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--border-accent);
+    box-shadow:0 22px 46px -26px rgba(var(--accent-rgb),.55);
+  }
+
+  .card-icon{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:11px;
+    color:var(--accent);
+    background:rgba(var(--accent-rgb),.1);
+    border:1px solid rgba(var(--accent-rgb),.2);
+  }
+  .card-icon svg{width:21px;height:21px}
+
+  .card h3{
+    margin:16px 0 8px;
+    font-size:1.03rem;
+    font-weight:650;
+    letter-spacing:-.015em;
+  }
+
+  .card p{
+    margin:0;
+    font-size:.92rem;
+    color:var(--muted);
+  }
+
+  /* ---------- Projekt-Karte ---------- */
+  .tag{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:999px;
+    font-family:var(--mono);
+    font-size:.67rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:rgba(var(--accent-rgb),.13);
+    border:1px solid rgba(var(--accent-rgb),.3);
+  }
+  .tag-ghost{
+    color:var(--muted);
+    background:transparent;
+    border-color:var(--border);
+  }
+
+  .project{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:26px;
     margin-top:30px;
-    font-size:12px;
-    color:#9ca3af;
-    line-height:1.7;
+    padding:30px;
+    border-radius:16px;
+    text-decoration:none;
+    color:inherit;
+    border:1px solid var(--border-accent);
+    background:
+      radial-gradient(620px 220px at 0% 0%, rgba(var(--accent-rgb),.14), transparent 70%),
+      linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   }
-  footer a{color:#9ca3af;text-decoration:none;border-bottom:1px dotted #cbd5e1}
-  footer a:hover{color:var(--muted)}
-  @media (max-width:480px){
-    .card{padding:30px 22px 24px}
-    h1{font-size:22px}
-    .row{font-size:13px}
+
+  .project:hover{
+    transform:translateY(-4px);
+    border-color:rgba(var(--accent-rgb),.55);
+    box-shadow:0 28px 60px -30px rgba(var(--accent-rgb),.6);
+  }
+
+  .project .tags{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+
+  .project h3{
+    margin:0 0 8px;
+    font-size:1.55rem;
+    font-weight:750;
+    letter-spacing:-.03em;
+  }
+
+  .project p{
+    margin:0 0 14px;
+    color:var(--muted);
+    max-width:58ch;
+    font-size:.95rem;
+  }
+
+  .project-url{
+    font-family:var(--mono);
+    font-size:.8rem;
+    color:var(--accent);
+  }
+
+  .arrow{
+    flex:none;
+    width:52px;
+    height:52px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    font-size:1.2rem;
+    color:var(--accent);
+    border:1px solid var(--border-accent);
+    background:rgba(var(--accent-rgb),.08);
+    transition:background .2s, transform .2s;
+  }
+  .project:hover .arrow{
+    background:rgba(var(--accent-rgb),.18);
+    transform:translateX(4px);
+  }
+
+  /* ---------- Status / Platzhalter ---------- */
+  .status-card{
+    padding:34px;
+    border-radius:16px;
+    border:1px dashed rgba(var(--accent-rgb),.4);
+    background:
+      repeating-linear-gradient(45deg, rgba(var(--accent-rgb),.032) 0 12px, transparent 12px 24px),
+      var(--bg-soft);
+  }
+
+  .status-head{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+  }
+
+  .status-head .mono{
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .status-card h2{margin-bottom:12px}
+
+  .status-card > p{
+    margin:0;
+    max-width:68ch;
+    color:var(--muted);
+  }
+
+  .status-list{
+    list-style:none;
+    margin:28px 0 0;
+    padding:0;
+    border-top:1px solid var(--border);
+  }
+
+  .status-list li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+    font-size:.92rem;
+  }
+
+  .status-list li span{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .status-list a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(var(--accent-rgb),.3);
+    padding-bottom:1px;
+    transition:border-color .2s, color .2s;
+  }
+  .status-list a:hover{border-color:currentColor;color:#6aff50}
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:40px;
+    border-top:1px solid var(--border);
+    background:rgba(255,255,255,.015);
+  }
+
+  .footer-inner{
+    max-width:1120px;
+    margin:0 auto;
+    padding:32px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+    font-size:.85rem;
+    color:var(--muted);
+  }
+
+  .footer-links{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+
+  .footer-links a{
+    color:var(--muted);
+    text-decoration:none;
+    transition:color .2s;
+  }
+  .footer-links a:hover{color:var(--accent)}
+
+  /* ---------- Puls-Punkt ---------- */
+  .pulse{
+    flex:none;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 0 rgba(var(--accent-rgb),.65);
+    animation:pulse 2.2s infinite;
+  }
+
+  @keyframes pulse{
+    70%{box-shadow:0 0 0 9px rgba(var(--accent-rgb),0)}
+    100%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),0)}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero{
+      grid-template-columns:1fr;
+      gap:40px;
+      padding-top:52px;
+    }
+    .grid-3{grid-template-columns:1fr}
+    .project{grid-template-columns:1fr}
+    .arrow{display:none}
+    .nav-links a.hide-sm{display:none}
+  }
+
+  @media (max-width:520px){
+    .nav{padding:12px 16px}
+    .hero, .section{padding-left:16px;padding-right:16px}
+    .status-card{padding:24px}
+    .project{padding:22px}
+    .cta-row .btn{flex:1 1 100%}
+    .footer-inner{padding:26px 16px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.001ms !important;
+      scroll-behavior:auto !important;
+    }
   }
 </style>
 </head>
 <body>
-  <main class="card">
 
-    <div class="badge"><span class="dot"></span> Parked Domain</div>
+<div class="page">
 
-    <h1>This domain is registered<br>but has no content yet</h1>
-    <p>
-      <strong class="domain">danltech.xyz</strong> has been registered and is currently
-      parked. No website, application or DNS records have been configured for this
-      domain so far.
-    </p>
+  <!-- Hinweis: Seite im Aufbau -->
+  <div class="topbar" role="note">
+    <span class="pulse" aria-hidden="true"></span>
+    <span><strong>Im Aufbau</strong> — diese Website ist ein Platzhalter und noch nicht in Benutzung.</span>
+  </div>
 
-    <div class="info">
-      <div class="row"><span>Domain</span><span>danltech.xyz</span></div>
-      <div class="row"><span>Status</span><span>Registered</span></div>
-      <div class="row"><span>Registrar</span><span>Gen.xyz (XYZ.COM LLC)</span></div>
-      <div class="row"><span>DNS records</span><span class="none">None found</span></div>
-      <div class="row"><span>Content</span><span class="none">Not configured</span></div>
-    </div>
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true">D</span>
+        DanlTech
+      </a>
+      <div class="nav-links">
+        <a href="#ansatz" class="hide-sm">Ansatz</a>
+        <a href="#projekte" class="hide-sm">Projekte</a>
+        <a href="#status">Status</a>
+        <a class="gh" href="https://github.com/danltech" target="_blank" rel="noopener">GitHub&nbsp;↗</a>
+      </div>
+    </nav>
+  </header>
 
-    <p style="margin-top:22px;font-size:14px">
-      If you are the owner of this domain, log in to your registrar account to
-      configure DNS records or deploy content.
-    </p>
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Entwicklerteam · Hardware-Reuse</span>
 
-    <div class="actions">
-      <a class="btn primary" href="https://gen.xyz/" rel="noopener nofollow">Registrar Login</a>
-      <a class="btn" href="https://gen.xyz/" rel="noopener nofollow">About this Domain</a>
-    </div>
+        <h1>Danl<span class="accent">Tech</span></h1>
 
-    <footer>
-      &copy; <span id="year">2026</span> danltech.xyz &middot; All rights reserved.<br>
-      This page is served automatically. Nothing to see here — yet.
-    </footer>
+        <p class="lead">
+          Wir holen alte Hardware zurück ins Leben — und lassen dabei
+          <strong>möglichst viel der originalen Software unangetastet</strong>.
+          Aktuell liegt unser Fokus auf <strong>Smartphones</strong>.
+        </p>
 
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://dtminibrowser.danltech.xyz" target="_blank" rel="noopener">
+            DT Mini Browser ansehen ↗
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/danltech" target="_blank" rel="noopener">
+            GitHub öffnen ↗
+          </a>
+        </div>
+
+        <p class="hero-note">
+          <span class="pulse" aria-hidden="true"></span>
+          Diese Seite ist ein Platzhalter und noch nicht in Benutzung.
+        </p>
+      </div>
+
+      <!-- Dekoratives Terminal -->
+      <div class="terminal" role="img" aria-label="Terminal-Vorschau: danltech, Fokus Hardware-Reuse und Smartphones, Website im Aufbau">
+        <div class="terminal-bar" aria-hidden="true">
+          <span class="term-dot"></span>
+          <span class="term-dot"></span>
+          <span class="term-dot"></span>
+          <span class="terminal-title">danltech@xyz ~</span>
+        </div>
+<pre class="terminal-body"><span class="p">$</span> whoami
+<span class="o">danltech — entwicklerteam</span>
+
+<span class="p">$</span> focus --current
+<span class="o">hardware-reuse · smartphones</span>
+
+<span class="p">$</span> status --website
+<span class="w">im aufbau · platzhalter</span> <span class="cursor">▍</span></pre>
+      </div>
+    </section>
+
+    <!-- Ansatz -->
+    <section class="section" id="ansatz">
+      <div class="section-head">
+        <p class="kicker">01 — Ansatz</p>
+        <h2>Alte Hardware. Neue Chancen.</h2>
+        <p>
+          Statt Geräte zu entsorgen, geben wir ihnen eine zweite Runde — mit so wenig
+          Eingriff wie möglich.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="6" width="12" height="12" rx="2.5"/>
+              <rect x="9.5" y="9.5" width="5" height="5" rx="1.2"/>
+              <path d="M9.5 3v3M14.5 3v3M9.5 18v3M14.5 18v3M3 9.5h3M3 14.5h3M18 9.5h3M18 14.5h3"/>
+            </svg>
+          </div>
+          <h3>Hardware wiederverwenden</h3>
+          <p>Wir bringen ältere Geräte zurück in den Alltag, statt sie wegzuwerfen.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6l7-3z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>Original-Software erhalten</h3>
+          <p>Wir entfernen so wenig originale Software wie möglich und arbeiten mit dem, was schon da ist.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="7" y="2.5" width="10" height="19" rx="2.6"/>
+              <path d="M11 18.5h2"/>
+            </svg>
+          </div>
+          <h3>Fokus: Smartphones</h3>
+          <p>Aktuell konzentrieren wir uns auf Handys — dort steckt das größte Potenzial.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projekte -->
+    <section class="section" id="projekte">
+      <div class="section-head">
+        <p class="kicker">02 — Projekte</p>
+        <h2>Woran wir gerade arbeiten</h2>
+        <p>Unser neuestes Projekt hat bereits eine eigene Seite — der Rest folgt nach und nach.</p>
+      </div>
+
+      <a class="project" href="https://dtminibrowser.danltech.xyz" target="_blank" rel="noopener">
+        <div>
+          <div class="tags">
+            <span class="tag">Neuestes Projekt</span>
+            <span class="tag tag-ghost">Live</span>
+          </div>
+          <h3>DT Mini Browser</h3>
+          <p>Unser aktuelles Projekt. Alle Details, Downloads und Neuigkeiten findest du direkt auf der Projektseite.</p>
+          <span class="project-url">dtminibrowser.danltech.xyz</span>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <!-- Status -->
+    <section class="section" id="status">
+      <div class="status-card">
+        <div class="status-head">
+          <span class="pulse" aria-hidden="true"></span>
+          <span class="mono">Status</span>
+          <span class="tag">Platzhalter</span>
+        </div>
+
+        <h2>Diese Seite ist noch nicht in Benutzung.</h2>
+        <p>
+          Du siehst hier eine vorläufige Platzhalterseite. Inhalte, Struktur und Design
+          können sich jederzeit ändern. Die eigentlichen Angebote, Projektseiten und
+          Downloads folgen in Kürze — schau gerne später noch einmal vorbei.
+        </p>
+
+        <ul class="status-list">
+          <li>
+            <span>Website</span>
+            <a href="https://danltech.xyz" target="_blank" rel="noopener">danltech.xyz</a>
+          </li>
+          <li>
+            <span>GitHub</span>
+            <a href="https://github.com/danltech" target="_blank" rel="noopener">github.com/danltech</a>
+          </li>
+          <li>
+            <span>Neuestes Projekt</span>
+            <a href="https://dtminibrowser.danltech.xyz" target="_blank" rel="noopener">dtminibrowser.danltech.xyz</a>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year">2025</span> DanlTech · danltech.xyz
+        <span style="opacity:.6">— Seite im Aufbau</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/danltech" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://dtminibrowser.danltech.xyz" target="_blank" rel="noopener">DT Mini Browser</a>
+        <a href="#status">Status</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Jahr im Footer aktuell halten
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
